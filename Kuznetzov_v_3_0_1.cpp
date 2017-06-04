@@ -1,4 +1,4 @@
-// Kuznetzov.cpp: определяет точку входа для консольного приложения.
+// Kuznetzov.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 
@@ -18,10 +18,10 @@ using namespace std;
 
 void show(int ** func, int ** func2, int num, int num2, int n) {
 
-	cout << endl << "внешних: " << num << "   внутренних: " << num2 << endl << endl;
-	cout << "массив внешних функций:" ;
+	cout << endl << "ГўГ­ГҐГёГ­ГЁГµ: " << num << "   ГўГ­ГіГІГ°ГҐГ­Г­ГЁГµ: " << num2 << endl << endl;
+	cout << "Г¬Г Г±Г±ГЁГў ГўГ­ГҐГёГ­ГЁГµ ГґГіГ­ГЄГ¶ГЁГ©:" ;
 	cout << "              ";
-	cout << "массив внутренних функций:" << endl;
+	cout << "Г¬Г Г±Г±ГЁГў ГўГ­ГіГІГ°ГҐГ­Г­ГЁГµ ГґГіГ­ГЄГ¶ГЁГ©:" << endl;
 
 	int n2 = n*n;
 	for (int i = 0; i < num2; i++) {
@@ -47,17 +47,13 @@ void show(int ** func, int ** func2, int num, int num2, int n) {
 }
 
 void func_cal(int * funcmain, int * arg1, int * arg2, int * newf, int n) {
-	
-	for (int k = 0; k < (n*n); k++) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
 
-				if (arg1[k] == i && arg2[k] == j) {
-					newf[k] = funcmain[i * n + j];
-				}
-			}
-		}
-	}
+	
+
+	for (int i=0;i<(n*n);i++)
+
+		{newf[i]=funcmain[arg1[i]*n+arg2[i]]}
+
 }
 
 void add(int ** func, int * newf, int & num, int n) {
@@ -132,16 +128,16 @@ void check(int ** func, int ** func2, int & num, int & num2, bool NOT, bool show
 							show(func, func2, num, num2 , n);
 							times++;
 
-							cout << "внутренняя функция 1:" << endl;
+							cout << "ГўГ­ГіГІГ°ГҐГ­Г­ГїГї ГґГіГ­ГЄГ¶ГЁГї 1:" << endl;
 							for (int f = 0; f < n*n; f++) cout << arg1[f] << " ";
 
-							cout << endl << "внутренняя функция 2:" << endl;
+							cout << endl << "ГўГ­ГіГІГ°ГҐГ­Г­ГїГї ГґГіГ­ГЄГ¶ГЁГї 2:" << endl;
 							for (int f = 0; f < n*n; f++) cout << arg2[f] << " ";
 
-							cout << endl << "подставляем во внешнюю функцию 3:" << endl;
+							cout << endl << "ГЇГ®Г¤Г±ГІГ ГўГ«ГїГҐГ¬ ГўГ® ГўГ­ГҐГёГ­ГѕГѕ ГґГіГ­ГЄГ¶ГЁГѕ 3:" << endl;
 							for (int f = 0; f < n*n; f++) cout << funcmain[f] << " ";
 
-							cout << endl << "получаем новую (" << num + 1 << ")" << endl;
+							cout << endl << "ГЇГ®Г«ГіГ·Г ГҐГ¬ Г­Г®ГўГіГѕ (" << num + 1 << ")" << endl;
 							for (int f = 0; f < n*n; f++) cout << newf[f] << " ";
 							cout << endl << endl;
 						}
@@ -172,7 +168,7 @@ int main()
 	system("title Kuznetzov_v.3.0.1");
 	setlocale(LC_ALL, "russian");
 
-	cout << "введите разрядность логики (2-...)" << endl;
+	cout << "ГўГўГҐГ¤ГЁГІГҐ Г°Г Г§Г°ГїГ¤Г­Г®Г±ГІГј Г«Г®ГЈГЁГЄГЁ (2-...)" << endl;
 	int n = 2;
 	cin >> n;
 
@@ -185,7 +181,7 @@ int main()
 			func[i] = new int[n*n];
 		}
 
-	int ** func2 = new int*[n2];// массив внутренних ф ций
+	int ** func2 = new int*[n2];// Г¬Г Г±Г±ГЁГў ГўГ­ГіГІГ°ГҐГ­Г­ГЁГµ Гґ Г¶ГЁГ©
 		for (int i = 0.; i < n2; i++) {
 			func2[i] = new int[n*n];
 		}
@@ -219,7 +215,7 @@ int main()
 	}
 
 
-		cout << "введите количество начальных функций" << endl;
+		cout << "ГўГўГҐГ¤ГЁГІГҐ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г­Г Г·Г Г«ГјГ­Г»Гµ ГґГіГ­ГЄГ¶ГЁГ©" << endl;
 
 		cin >> num;
 		if (sel == 1) num2 =2;
@@ -227,7 +223,7 @@ int main()
 		cout << "begin typing functions" << endl;
 		for (int i = 0; i < num; i++) {
 			for (int j = 0; j < n*n; j++) {
-				cin >> func[i][j];//в оба множества
+				cin >> func[i][j];//Гў Г®ГЎГ  Г¬Г­Г®Г¦ГҐГ±ГІГўГ 
 
 				arg2[j] = func[i][j];
 			}
